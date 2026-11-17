@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CorpoFit — ton entraînement et ton assiette, au même endroit</title>
+<meta name="description" content="175 exercices, un journal alimentaire, un scanner de codes-barres et un coach. Gratuit pour de bon, pas quinze jours. S'installe depuis ton navigateur, sans passer par une boutique.">
+<meta name="theme-color" content="#15100D">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="CorpoFit — ton entraînement et ton assiette, au même endroit">
+<meta property="og:description" content="175 exercices, un journal alimentaire, un scanner de codes-barres et un coach. Gratuit pour de bon, pas quinze jours.">
+<meta property="og:image" content="img/partage.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#15100D; --surface:#1E1815; --surface-2:#271F1A;
+  --border:#2E2520; --border-2:#463830;
+  --accent:#CB5A31; --accent-ink:#F0A183; --accent-soft:#33190F;
+  --text:#F6EEE5; --text-2:#C0AC9B; --text-3:#8C7867;
+  --btn-txt:#FFF6EF; --green:#8CAE68;
+  --r:18px; --r-s:12px;
+  --gut:16px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif; font-weight:600; line-height:1.18; margin:0; letter-spacing:-.2px;}
+p{margin:0;}
+a{color:var(--accent-ink);}
+a:hover{color:var(--text);}
+img{display:block; max-width:100%; height:auto;}
+:focus-visible{outline:2px solid var(--accent-ink); outline-offset:3px; border-radius:4px;}
+
+.wrap{max-width:1060px; margin:0 auto; padding:0 var(--gut);}
+section{padding:56px 0;}
+section > .wrap > h2{font-size:clamp(23px,5.8vw,31px); max-width:17em;}
+.rule{width:38px; height:3px; background:var(--accent); border-radius:2px;}
+
+/* ───────── en-tête ───────── */
+.bar{position:sticky; top:0; z-index:40; background:rgba(21,16,13,.88); backdrop-filter:blur(12px); border-bottom:1px solid var(--border);}
+.bar .wrap{display:flex; align-items:center; justify-content:space-between; height:62px;}
+.marque{display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--text);}
+.cf{width:34px; height:34px; border-radius:10px; background:var(--accent); display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:15px; color:#FFF6EF; flex:0 0 auto;}
+.marque b{font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:17.5px; letter-spacing:.2px;}
+.bar .mini{font-size:14px; font-weight:500; color:var(--accent-ink); text-decoration:none; padding:9px 2px;}
+
+/* ───────── bandeau navigateur intégré ───────── */
+.avis{display:none; background:var(--accent-soft); border-bottom:1px solid var(--border-2); color:var(--accent-ink); font-size:14px;}
+.avis.on{display:block;}
+.avis .wrap{padding-top:13px; padding-bottom:13px; line-height:1.55;}
+
+/* ───────── héros ───────── */
+.heros{padding-top:46px; padding-bottom:0; overflow:hidden; border-bottom:1px solid var(--border-2);}
+.heros .wrap{display:grid; gap:34px;}
+.h-txt{max-width:560px; padding-bottom:30px;}
+.heros h1{font-size:clamp(31px,8.2vw,56px); letter-spacing:-.6px; margin-top:20px;}
+.h-sous{color:var(--text-2); font-size:clamp(16px,4vw,19px); margin-top:18px; max-width:30em;}
+.h-act{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:28px;}
+.btn{display:inline-block; background:var(--accent); color:var(--btn-txt); text-decoration:none;
+     font-size:16.5px; font-weight:600; padding:16px 30px; border-radius:var(--r-s); border:0; cursor:pointer;
+     font-family:inherit; min-height:44px;}
+.btn:hover{background:#D9663B; color:var(--btn-txt);}
+.btn-2{display:inline-block; color:var(--text-2); text-decoration:none; font-size:15.5px; font-weight:500; padding:14px 4px; min-height:44px;}
+.btn-2:hover{color:var(--text);}
+.h-note{color:var(--text-3); font-size:13.5px; margin-top:16px;}
+.h-img{justify-self:center; width:min(268px,74vw); margin-bottom:-56px;}
+.h-img img{border-radius:22px; border:1px solid var(--border-2);}
+
+/* ───────── ce que l'app fait ───────── */
+.quoi{display:grid; gap:0; margin-top:28px; border-top:1px solid var(--border);}
+.quoi > div{padding:26px 0; border-bottom:1px solid var(--border);}
+.quoi h3{font-size:20px;}
+.quoi p{color:var(--text-2); margin-top:9px; font-size:15.5px; max-width:46em;}
+
+/* ───────── écrans ───────── */
+.defil{display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory;
+       padding:4px var(--gut) 20px; margin:26px calc(var(--gut) * -1) 0; -webkit-overflow-scrolling:touch;}
+.defil::-webkit-scrollbar{height:6px;}
+.defil::-webkit-scrollbar-thumb{background:var(--border-2); border-radius:3px;}
+.vign{flex:0 0 auto; width:208px; scroll-snap-align:center; margin:0;}
+.vign img{border-radius:16px; border:1px solid var(--border);}
+.vign figcaption{color:var(--text-3); font-size:13px; margin-top:11px; line-height:1.5;}
+
+/* ───────── prix ───────── */
+.prix{display:grid; gap:14px; margin-top:26px;}
+.plan{background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:26px 22px 28px;}
+.plan.fort{border-color:var(--accent);}
+.plan .tag{display:inline-block; font-size:12px; font-weight:600; letter-spacing:1.1px; text-transform:uppercase;
+           color:var(--accent-ink); background:var(--accent-soft); border-radius:6px; padding:4px 9px; margin-bottom:13px;}
+.plan h3{font-size:21px;}
+.plan .euro{display:flex; align-items:baseline; gap:9px; margin-top:13px;}
+.plan .gros{font-family:'Fraunces',Georgia,serif; font-size:37px; font-weight:600; letter-spacing:-1px;}
+.plan .mois{color:var(--text-3); font-size:14px;}
+.plan .an{color:var(--text-3); font-size:13.5px; margin-top:5px;}
+.plan .phrase{color:var(--text-2); font-size:15px; margin-top:15px;}
+.plan ul{list-style:none; margin:19px 0 0; padding:0;}
+.plan li{color:var(--text-2); font-size:14.5px; padding:7px 0 7px 23px; position:relative; line-height:1.5;}
+.plan li::before{content:''; position:absolute; left:3px; top:15px; width:7px; height:7px; border-radius:50%; background:var(--accent);}
+.plan.fort li::before{background:var(--green);}
+.p-note{color:var(--text-3); font-size:13.5px; margin-top:18px;}
+
+/* ───────── installation ───────── */
+.poser{background:var(--surface); border-radius:var(--r); padding:30px 22px 32px; margin-top:26px;}
+.col{display:none;}
+.col.on{display:block;}
+.col h3{font-size:20px; margin-bottom:17px;}
+.col ol{margin:0; padding-left:0; list-style:none; counter-reset:p;}
+.col li{counter-increment:p; position:relative; padding:0 0 19px 44px; color:var(--text-2); font-size:15.5px; line-height:1.6;}
+.col li::before{content:counter(p); position:absolute; left:0; top:-1px; width:29px; height:29px; border-radius:9px;
+                background:var(--surface-2); color:var(--accent-ink); font-size:14px; font-weight:600;
+                display:flex; align-items:center; justify-content:center;}
+.col li b{color:var(--text); font-weight:600;}
+.bascule{margin-top:6px; background:none; border:0; color:var(--accent-ink); font-family:inherit;
+         font-size:14.5px; font-weight:500; cursor:pointer; padding:12px 2px; min-height:44px; text-align:left;}
+.bascule:hover{color:var(--text);}
+.apres{border-top:1px solid var(--border); margin-top:22px; padding-top:20px; color:var(--text-2); font-size:15px;}
+.garde{color:var(--text-3); font-size:13.5px; margin-top:12px; line-height:1.6;}
+
+/* ───────── questions ───────── */
+.q{border-top:1px solid var(--border); margin-top:26px;}
+.q > div{padding:24px 0; border-bottom:1px solid var(--border);}
+.q h3{font-size:17.5px;}
+.q p{color:var(--text-2); font-size:15.5px; margin-top:9px; max-width:46em;}
+
+/* ───────── pied ───────── */
+footer{border-top:1px solid var(--border); padding:40px 0 54px; color:var(--text-3); font-size:13.5px;}
+footer nav{display:flex; flex-wrap:wrap; gap:7px 22px; margin-bottom:22px;}
+footer nav a{color:var(--text-2); text-decoration:none; font-size:14.5px; padding:7px 0; display:inline-block;}
+footer nav a:hover{color:var(--text); text-decoration:underline;}
+.f-bloc{line-height:1.75; max-width:52em;}
+.f-sante{border-top:1px solid var(--border); margin-top:22px; padding-top:18px; max-width:52em; line-height:1.7;}
+.trou{color:#E4B8A2; background:var(--accent-soft); border-radius:5px; padding:1px 6px; font-size:.94em;}
+
+@media (min-width:760px){
+  :root{--gut:28px;}
+  section{padding:88px 0;}
+  .heros{padding-top:66px;}
+  .heros .wrap{grid-template-columns:1fr auto; align-items:end; gap:44px;}
+  .h-img{width:286px; margin-bottom:-78px; justify-self:end;}
+  .quoi{grid-template-columns:1fr 1fr; column-gap:44px;}
+  .quoi > div:nth-child(-n+2){border-top:0;}
+  .prix{grid-template-columns:repeat(3,1fr); align-items:start;}
+  .poser{display:grid; grid-template-columns:1fr 1fr; gap:40px; padding:36px 34px 38px;}
+  .poser .deux{grid-column:1 / -1;}
+  .defil{display:grid; grid-template-columns:repeat(6,1fr); overflow:visible;
+         margin-left:0; margin-right:0; padding-left:0; padding-right:0;}
+  .vign{width:auto;}
+}
+@media (prefers-reduced-motion:no-preference){
+  .h-img{animation:monte .7s cubic-bezier(.22,.8,.3,1) both;}
+  .h-txt{animation:monte .55s cubic-bezier(.22,.8,.3,1) both;}
+  @keyframes monte{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;}}
+}
+</style>
+</head>
+<body>
+
+<div class="avis" id="avis" role="status">
+  <div class="wrap">Tu es dans le navigateur d'une autre app. Ouvre cette page dans Safari pour pouvoir installer CorpoFit.</div>
+</div>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="marque" href="index.html"><span class="cf" aria-hidden="true">CF</span><b>CorpoFit</b></a>
+    <a class="mini" href="#installer">Installer</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="heros">
+    <div class="wrap">
+      <div class="h-txt">
+        <div class="rule" aria-hidden="true"></div>
+        <h1>Ton entraînement et ton assiette, au même endroit.</h1>
+        <p class="h-sous">175 exercices, un journal alimentaire, un scanner de codes-barres et un coach. Gratuit pour de bon, pas quinze jours.</p>
+        <div class="h-act">
+          <a class="btn" href="#installer">Installer CorpoFit</a>
+          <a class="btn-2" href="#ecrans">Voir les écrans</a>
+        </div>
+        <p class="h-note">Rien à télécharger. Pas de compte pour essayer.</p>
+      </div>
+      <div class="h-img">
+        <picture>
+          <source srcset="img/accueil.webp" type="image/webp">
+          <img src="img/accueil.jpg" width="620" height="1342" fetchpriority="high"
+               alt="L'écran d'accueil de CorpoFit : le rang de l'utilisateur, son objectif avec 2 200 kcal et 150 g de protéines par jour, la séance du jour et un indice de forme.">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Ce que tu fais avec CorpoFit</h2>
+      <div class="quoi">
+        <div>
+          <h3>Tu t'entraînes</h3>
+          <p>Des séances prêtes, choisies selon ton niveau, ton matériel et l'endroit où tu t'entraînes. La séance guidée t'accompagne série par série, minuteur compris.</p>
+        </div>
+        <div>
+          <h3>Tu manges</h3>
+          <p>Scanne un code-barres, note ton repas, vois tes calories et tes protéines du jour. 509 aliments déjà dedans, le reste par le scanner.</p>
+        </div>
+        <div>
+          <h3>Tu notes</h3>
+          <p>Ton poids, tes pas, ton eau, tes sorties course et vélo, tes photos de progression. Un geste par jour, pas un formulaire.</p>
+        </div>
+        <div>
+          <h3>Tu vois</h3>
+          <p>Les courbes, les records, les badges. Ce qui a changé depuis trois mois, en un écran, sans avoir à tenir un tableur.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ecrans">
+    <div class="wrap">
+      <h2>À quoi ça ressemble</h2>
+    </div>
+    <div class="wrap">
+      <div class="defil">
+        <figure class="vign">
+          <picture><source srcset="img/accueil.webp" type="image/webp">
+          <img src="img/accueil.jpg" width="620" height="1342" loading="lazy" alt="Écran d'accueil : objectif quotidien, séance du jour et indice de forme."></picture>
+          <figcaption>Ta journée en un écran</figcaption>
+        </figure>
+        <figure class="vign">
+          <picture><source srcset="img/entrainement.webp" type="image/webp">
+          <img src="img/entrainement.jpg" width="620" height="1342" loading="lazy" alt="Écran d'entraînement : la séance choisie, sa durée et la liste des exercices."></picture>
+          <figcaption>La séance, prête à faire</figcaption>
+        </figure>
+        <figure class="vign">
+          <picture><source srcset="img/nutrition.webp" type="image/webp">
+          <img src="img/nutrition.jpg" width="620" height="1342" loading="lazy" alt="Écran de nutrition : calories et macronutriments du jour, repas déjà notés."></picture>
+          <figcaption>Le journal alimentaire</figcaption>
+        </figure>
+        <figure class="vign">
+          <picture><source srcset="img/progression.webp" type="image/webp">
+          <img src="img/progression.jpg" width="620" height="1342" loading="lazy" alt="Écran de progression : courbe de poids sur trois mois et résumé des séances."></picture>
+          <figcaption>Trois mois en une courbe</figcaption>
+        </figure>
+        <figure class="vign">
+          <picture><source srcset="img/courses.webp" type="image/webp">
+          <img src="img/courses.jpg" width="620" height="1342" loading="lazy" alt="Écran des sorties : une course à pied et une sortie vélo avec distance, durée et calories."></picture>
+          <figcaption>Course, marche et vélo</figcaption>
+        </figure>
+        <figure class="vign">
+          <picture><source srcset="img/coach.webp" type="image/webp">
+          <img src="img/coach.jpg" width="620" height="1342" loading="lazy" alt="Écran du coach : une question sur une douleur au dos et la réponse détaillée du coach."></picture>
+          <figcaption>Le coach, si tu le prends</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="prix">
+    <div class="wrap">
+      <h2>Les formules</h2>
+      <div class="prix">
+
+        <div class="plan fort">
+          <span class="tag">Pour toujours</span>
+          <h3>Gratuit</h3>
+          <div class="euro"><span class="gros">0 €</span></div>
+          <p class="phrase">Tout l'entraînement et toute la nutrition. Pour de bon, pas quinze jours.</p>
+          <ul>
+            <li>Toutes les séances prêtes à faire</li>
+            <li>Les 175 exercices détaillés</li>
+            <li>La séance guidée, minuteur compris</li>
+            <li>Le journal alimentaire et tes besoins</li>
+            <li>Le scan des codes-barres</li>
+            <li>Ton poids, tes pas, ton eau, ton sommeil</li>
+            <li>Tes favorites et tes badges</li>
+            <li>4 photos de progression</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3>Complet</h3>
+          <div class="euro"><span class="gros">4,99 €</span><span class="mois">par mois</span></div>
+          <p class="an">ou 29,99 € l'année, soit 2,50 € par mois</p>
+          <p class="phrase">Tout le suivi, tes propres séances, ton analyse et ta cuisine.</p>
+          <ul>
+            <li>Tout ce qu'il y a dans Gratuit</li>
+            <li>Ma semaine : ton planning</li>
+            <li>Mes charges : courbes et records</li>
+            <li>Mes mensurations</li>
+            <li>Photos de progression sans limite</li>
+            <li>L'analyse de tes photos avant / après</li>
+            <li>Tes propres séances et la séance sur mesure</li>
+            <li>Cuisiner avec ce que tu as chez toi</li>
+            <li>Tes données sur tous tes appareils</li>
+            <li>Tous les thèmes</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3>Complet + IA</h3>
+          <div class="euro"><span class="gros">9,99 €</span><span class="mois">par mois</span></div>
+          <p class="an">ou 49,99 € l'année, soit 4,17 € par mois</p>
+          <p class="phrase">Tout Complet, plus le coach et la cuisine par intelligence artificielle.</p>
+          <ul>
+            <li>Tout ce qu'il y a dans Complet</li>
+            <li>Le coach IA, 300 questions par mois</li>
+            <li>Des repas inventés pour toi par l'IA</li>
+            <li>La photo d'un repas analysée</li>
+            <li>Les nouveautés en avant-première</li>
+          </ul>
+        </div>
+
+      </div>
+      <p class="p-note">Sans engagement, résiliable à tout moment depuis l'app.</p>
+    </div>
+  </section>
+
+  <section id="installer">
+    <div class="wrap">
+      <h2>Trois gestes, et elle est sur ton écran d'accueil.</h2>
+
+      <div class="poser">
+
+        <div class="col" id="cIos">
+          <h3>Sur iPhone</h3>
+          <ol>
+            <li>Ouvre cette page dans <b>Safari</b>.</li>
+            <li>Touche le bouton <b>Partager</b>, en bas de l'écran.</li>
+            <li>Fais défiler et choisis <b>Sur l'écran d'accueil</b>, puis <b>Ajouter</b>.</li>
+          </ol>
+          <p class="garde">Sur iPhone, l'ajout ne marche que depuis Safari. Si tu es dans Chrome ou dans une autre app, ouvre d'abord cette page dans Safari.</p>
+        </div>
+
+        <div class="col" id="cDroid">
+          <h3>Sur Android</h3>
+          <ol>
+            <li>Ouvre cette page dans <b>Chrome</b>.</li>
+            <li>Touche les <b>trois points</b>, en haut à droite.</li>
+            <li>Choisis <b>Ajouter à l'écran d'accueil</b>, puis <b>Installer</b>.</li>
+          </ol>
+        </div>
+
+        <div class="deux">
+          <button class="bascule" id="autre" type="button" hidden></button>
+          <p class="apres">L'icône apparaît avec tes autres apps. Elle s'ouvre en plein écran et fonctionne sans réseau.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Questions</h2>
+      <div class="q">
+        <div>
+          <h3>C'est vraiment gratuit ?</h3>
+          <p>Oui, et sans limite de durée. Les séances, les exercices, le journal alimentaire et le scanner restent gratuits. Les formules payantes ajoutent le planning, tes propres séances, le suivi des charges et le coach.</p>
+        </div>
+        <div>
+          <h3>Pourquoi ce n'est pas sur l'App Store ?</h3>
+          <p>CorpoFit s'installe directement depuis cette page, sans passer par une boutique. C'est aussi pour ça qu'elle peut rester gratuite : il n'y a pas de commission à reverser.</p>
+        </div>
+        <div>
+          <h3>Où vont mes données ?</h3>
+          <p>Tes photos de progression ne quittent jamais ton téléphone. Le reste n'est envoyé que si tu crées un compte, pour retrouver tes données sur un autre appareil. Tu peux tout supprimer en deux gestes.</p>
+        </div>
+        <div>
+          <h3>Je n'ai jamais fait de sport.</h3>
+          <p>Il y a un niveau « Première expérience ». L'app choisit des séances courtes, sans matériel, et t'explique chaque mouvement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="Pages légales">
+      <a href="cgu.html">Conditions générales</a>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="mentions.html">Mentions légales</a>
+      <a href="suppression.html">Supprimer mon compte</a>
+    </nav>
+    <p class="f-bloc">CorpoFit — édité par Mathias Vermeersch, entrepreneur individuel.<br>
+      Contact : <span class="trou">à remplacer : ton adresse de contact</span></p>
+    <p class="f-sante">CorpoFit n'est pas un dispositif médical. L'app ne pose aucun diagnostic et ne remplace pas l'avis d'un professionnel. Demande l'avis d'un médecin avant de commencer un programme d'entraînement ou de changer ton alimentation.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ua = navigator.userAgent || '';
+  var iOS = /iPad|iPhone|iPod/.test(ua) ||
+            (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var droid = /Android/i.test(ua);
+  var integre = /FBAN|FBAV|FB_IAB|Instagram|Line\/|Snapchat|TikTok|Twitter|LinkedInApp|Pinterest/i.test(ua);
+
+  var cIos   = document.getElementById('cIos');
+  var cDroid = document.getElementById('cDroid');
+  var autre  = document.getElementById('autre');
+
+  /* Ordinateur ou mobile inconnu : les deux colonnes, sans bascule. */
+  if(!iOS && !droid){
+    cIos.classList.add('on');
+    cDroid.classList.add('on');
+  }else{
+    (iOS ? cIos : cDroid).classList.add('on');
+    autre.hidden = false;
+    autre.textContent = iOS ? 'Je suis sur Android' : 'Je suis sur iPhone';
+    autre.addEventListener('click', function(){
+      var surIos = cIos.classList.contains('on');
+      cIos.classList.toggle('on', !surIos);
+      cDroid.classList.toggle('on', surIos);
+      autre.textContent = surIos ? 'Je suis sur iPhone' : 'Je suis sur Android';
+    });
+  }
+
+  /* Dans Instagram ou Messenger, « Sur l'écran d'accueil » n'existe pas :
+     on le dit avant que la personne cherche. */
+  if(integre) document.getElementById('avis').classList.add('on');
+})();
+</script>
+
+</body>
+</html>
